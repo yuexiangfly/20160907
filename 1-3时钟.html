@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        .box{
+            width:300px;
+            height:300px;
+            border:5px solid #000;
+            margin:100px auto;
+            border-radius:50%;
+            position:relative;
+        }
+        .box .hou{
+             width:8px;
+             height:80px;
+             border-radius:50% 50% 0 0;
+             background:#000;
+             position:absolute;
+             left:50%;
+             margin-left:-4px;
+             top:50%;
+             margin-top:-80px;
+        }
+        .box .min{
+            width:6px;
+            height:100px;
+            border-radius:50% 50% 0 0;
+            background:green;
+            position:absolute;
+            left:50%;
+            margin-left:-3px;
+            top:50%;
+            margin-top:-100px;
+        }
+        .box .sco{
+            width:4px;
+            height:120px;
+            border-radius:50% 50% 0 0;
+            background:red;
+            position:absolute;
+            left:50%;
+            margin-left:-2px;
+            top:50%;
+            margin-top:-120px;
+        }
+    </style>
+    <script>
+        window.onload=function(){
+            var oBox = document.querySelector('.box');
+            var oHou = document.querySelector('.hou');
+            var oMi  = document.querySelector('.min');
+            var oSo  = document.querySelector('.sco');
+            function clock(){
+                var oData = new Date();
+                var h = oData.getHours();
+                var m = oData.getMinutes();
+                var s = oData.getSeconds();
+                oHou.style.transform = 'rotate('+h*30+'deg)';
+                oMi.style.transform = 'rotate('+m*6+'deg)';
+                oSo.style.transform = 'rotate('+s*6+'deg)';
+            };
+            clock();
+            setInterval(clock,30);
+
+        };
+    </script>
+</head>
+<body>
+   <div class="box">
+       <div class="hou"></div>
+       <div class="min"></div>
+       <div class="sco"></div>
+   </div>
+</body>
+</html>

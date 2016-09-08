@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        body{
+            overflow:hidden;
+        }
+        a{
+            text-decoration:none;
+        }
+        #box{
+            width:400px;
+            height:300px;
+            border:1px solid #ccc;
+            margin:100px auto;
+            position:relative;
+            background:#ccc;
+            border-radius:20px;
+            -webkit-transform:scale(5,5);
+            display:none;
+            opacity:0;
+        }
+        #box a{
+            position:absolute;
+            top:150px;
+            left:200px;
+        }
+        #box input{
+           margin-top:10px;
+           margin-left:130px;
+           float:left;
+        }
+    </style>
+    <script>
+        window.onload=function(){
+            var oAa = document.getElementById('an_btn');
+            var oBox =document.getElementById('box');
+            var oClos = document.getElementById('on');
+            oAa.onclick=function(){
+                oBox.style.display = 'block';
+                oBox.style.WebkitTransition='.3s all ease';
+                setTimeout(function(){
+                    oBox.style.opacity=1;
+                    oBox.style.WebkitTransform='scale(1,1)';
+                },0);
+            };
+            oClos.onclick=function(){
+                 oBox.style.WebkitTransform='scale(5,5)';
+                 oBox.style.opacity = 0;
+                 oBox.style.WebkitTransition='.3s all ease';
+
+                 function tranEnd(){
+                     oBox.removeEventListener('transitionend',tranEnd,false);
+                     oBox.style.display='none';
+                 };
+                 oBox.addEventListener('transitionend',tranEnd,false);
+            };
+        };
+    </script>
+</head>
+<body>
+      <a href="javascript:;" id="an_btn">登陆</a>
+      <div id="box">
+          <input type="text">
+          <input type="text">
+          <input type="text">
+          <input type="text">
+          <input type="text">
+          <a href="javascript:;" id="on">(X)</a>
+      </div>
+</body>
+</html>
